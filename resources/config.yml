@@ -1,0 +1,11 @@
+# Don't Touch This !
+version: 1.0.0
+
+# Loss Hearts On Death Don't Change This !
+Loss Heart: 2
+
+#Ban On Hearts If Its Set On 0 Than Set Loss On Hearts On 1 !
+Ban On Hearts: 1
+
+# Heart Crafting 
+register-recipes: true
