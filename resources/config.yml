@@ -7,5 +7,8 @@ Loss Heart: 2
 #Ban On Hearts If Its Set On 0 Than Set Loss On Hearts On 1 !
 Ban On Hearts: 1
 
+# Get Heart On Consumed A Heart
+Heart : 2
+
 # Heart Crafting 
 register-recipes: true
