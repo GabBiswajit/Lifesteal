@@ -149,15 +149,14 @@ public function onCommand(CommandSender $sender, Command $command, string $label
 				$player->getServer()->getNameBans()->addBan($player->getName(), 'Lost all healths');
 			}
 		}
-	}
-  public function onItemUse(PlayerItemUseEvent $event){
+	} 
+public function onItemUse(PlayerItemUseEvent $event) {
         $player = $event->getPlayer();
         $item = $event->getItem();
         $amountToRemove = 1;
-
-  if ($item = CustomiesItemFactory::getInstance()->get("lifesteal:heart")) {
-      $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
-      $player->getInventory()->remove($item, $amountToRemove);
-        }
-  }
+        $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart") ?? null;
+        $ItemToRemove = $item->setCount(1);
+        $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
+        $player->getInventory()->remove($ItemToRemove);
+	}
 }
