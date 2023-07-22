@@ -1,7 +1,7 @@
 # How To Install
-🔗 Download The Plugin !
-🔗 Upload In Your Server Plugin Fills !
-🔗 Start The Server !
+- 🔗 Download The Plugin !
+- 🔗 Upload In Your Server Plugin Fills !
+- 🔗 Start The Server !
 
 ## Requirement
 - PocketMine-MP 5.0.0 or higher
