@@ -9,7 +9,7 @@
 
 # Function 
 - Heart Withdrawal ✅
-- Cratf Heart ✅
+- Craft Heart ✅
 - Gain A Heart On Kill ✅
 - Loss A Heart On Die ✅
 
