@@ -151,7 +151,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         $amountToRemove = 1;
 
   if ($item = CustomiesItemFactory::getInstance()->get("lifesteal:heart")) {
-      $player->setMaxHealth($player->getMaxHealth() + 2);
+      $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
       $player->getInventory()->remove($item, $amountToRemove);
         }
   }
