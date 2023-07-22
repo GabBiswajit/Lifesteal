@@ -32,7 +32,10 @@ use function array_merge;
 
 final class Main extends PluginBase implements Listener{
 
-
+/** @var Config */
+private $playerData;
+private $config;
+	
 	public function onEnable(): void{
         $this->playerData = new Config($this->getDataFolder() . "playerdata.yml", Config::YAML);
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
