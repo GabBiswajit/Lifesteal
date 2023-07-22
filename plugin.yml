@@ -1,0 +1,17 @@
+name: Lifesteal
+main: Biswajit\Lifesteal\Main
+author: Biswajit
+version: 1.0.0
+api: 5.0.0
+description: You can steal hearts from the players you kill!
+
+commands:
+    withdrawal:
+        description: "To Withdraw Hearts"
+        permission: withdrawal.cmd
+      
+
+permissions:
+    withdrawal.cmd:
+        description: "Permission To Use/Withdraw Command"
+        default: true
