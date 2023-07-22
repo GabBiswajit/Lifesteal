@@ -80,14 +80,16 @@ public function onCommand(CommandSender $sender, Command $command, string $label
             $sender->sendMessage("This command can only be used in-game.");
             return true;
         }
-        
         $heart = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
+        if (!$sender->getInventory()->canAddItem($heart)) {
+            $sender->sendMessage("§cYour Inventory is Full. Please Empty it!");
+            return false;
+        }
         $sender->setMaxHealth($sender->getMaxHealth() - 2);
         $sender->getInventory()->addItem($heart);
         $sender->sendMessage("§l§aYou have successfully withdrawn a heart.");
-   
     }
-   return false;
+    return false;
 }
     
      public function onPlayerJoin(PlayerJoinEvent $event) {
