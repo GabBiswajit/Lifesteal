@@ -5,4 +5,7 @@ branches:
 projects:
   Lifesteal:
     path: ""
+    libs:
+      - src: customiesdevs/customies/Customies
+        version: ^1.3.2
 ...
