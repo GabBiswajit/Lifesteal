@@ -3,6 +3,8 @@ main: Biswajit\Lifesteal\Main
 author: Biswajit
 version: 1.0.0
 api: 5.0.0
+depend:
+- Customies
 description: You can steal hearts from the players you kill!
 
 commands:
