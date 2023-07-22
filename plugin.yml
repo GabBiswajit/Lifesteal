@@ -8,10 +8,9 @@ description: You can steal hearts from the players you kill!
 commands:
     withdrawal:
         description: "To Withdraw Hearts"
-        permission: withdrawal.cmd
-      
+        permission: Lifesteal.cmd.withdrawal
 
 permissions:
-    withdrawal.cmd:
+    Lifesteal.cmd.withdrawal:
         description: "Permission To Use/Withdraw Command"
         default: true
