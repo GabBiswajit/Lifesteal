@@ -27,6 +27,3 @@
 # Heart Recipe
 ![IMG_20230722_153523](https://github.com/GabBiswajit/Lifesteal/assets/121815367/44d2936d-00ac-4312-8462-2ad0d814374d)
 
-# Alert
-- If You **Redeem A Heart** Than make Sure You Have Only 1 Heart In you Inventory Or you Loss all Your Inventory Hearts
-- This Buy Fix Soon..
