@@ -20,6 +20,10 @@
 - If **register-recipes** Is true Than You Can Craft A Heart !
 - If **register-recipes** Id False Than You Can't Craft A Heart !
 
+# Command
+- **/withdrawal**
+- Upcoming Command **/setheart**
+- 
 # Heart Recipe
 ![IMG_20230722_153523](https://github.com/GabBiswajit/Lifesteal/assets/121815367/44d2936d-00ac-4312-8462-2ad0d814374d)
 
