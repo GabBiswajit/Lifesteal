@@ -1,13 +1,1 @@
-# Don't Touch This !
-version: 1.0.0
 
-# Gain Hearts On Kill
-Gain Heart: 2
-
-# Loss Hearts On Death
-Loss Heart: 2
-
-# Heart Crafting 
-register-recipes: true
-
-# Do not set the number more than 20
