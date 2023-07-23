@@ -154,8 +154,8 @@ public function onItemUse(PlayerItemUseEvent $event) {
         $player = $event->getPlayer();
         $item = $event->getItem();
         $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
-        $ItemToRemove = $item->setCount(1);
+        $item->setCount(1);
         $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
-        $player->getInventory()->remove($ItemToRemove);
+        $player->getInventory()->removeItem($item);
 	}
 }
