@@ -1,7 +1,9 @@
+![5f2cc91d628c3814618c0fd03a7ff8c67440f834](https://github.com/GabBiswajit/Lifesteal/assets/121815367/f79a66ec-ea2e-40a4-9467-f872b2157275)
+
 # How To Install
-- 🔗 Download The Plugin !
-- 🔗 Upload In Your Server Plugin Fills !
-- 🔗 Start The Server !
+-  Download The Plugin !
+-  Upload In Your Server Plugin Fills !
+-  Start The Server !
 
 ## Requirement
 - PocketMine-MP 5.0.0 or higher
