@@ -153,7 +153,6 @@ public function onCommand(CommandSender $sender, Command $command, string $label
 public function onItemUse(PlayerItemUseEvent $event) {
         $player = $event->getPlayer();
         $item = $event->getItem();
-        $amountToRemove = 1;
         $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
         $ItemToRemove = $item->setCount(1);
         $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
