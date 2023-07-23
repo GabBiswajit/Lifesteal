@@ -21,7 +21,7 @@
 # ![e93a94d7d625672ffe020b368ccf303baf22a6a5](https://github.com/GabBiswajit/Lifesteal/assets/121815367/b3963825-5e6c-4ff8-96a9-75979c496473)
 
 - Don't Change The Version On Config
-- You Can Cosmozie The Loss Heart On Death In Config If Its Make Crash Than Set It On **Default** : 1
+- You Can Costomize The Loss Heart On Death In Config If Its Make Crash Than Set It On **Default** : 1
 - You Can Costomize The Ban On Heart In Config If Its Make A Crash Than set Is On **Default** : 0
 - If **register-recipes** Is true Than You Can Craft A Heart !
 
