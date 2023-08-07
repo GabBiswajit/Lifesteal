@@ -6,7 +6,7 @@ namespace Biswajit\Lifesteal;
 
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\command\CommandSender;
-
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\command\Command;
 use pocketmine\event\Listener;
 use pocketmine\Server;
@@ -43,8 +43,10 @@ private $config;
 	    $version = $this->getDescription()->getVersion();
         $configVer = $this->getConfig()->get("version");
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
-    
-       $this->saveResource("Lifesteal.mcpack");
+        $this->saveDefaultConfig();
+        $this->maxHealth = $this->getConfig()->get("max_health");
+        
+        $this->saveResource("Lifesteal.mcpack");
 		$rpManager = $this->getServer()->getResourcePackManager();
 		$rpManager->setResourceStack(array_merge($rpManager->getResourceStack(), [new ZippedResourcePack(Path::join($this->getDataFolder(), "Lifesteal.mcpack"))]));
 		(new \ReflectionProperty($rpManager, "serverForceResources"))->setValue($rpManager, true);
@@ -54,6 +56,12 @@ private $config;
 		if($this->getConfig()->get("register-recipes", true)){
 			$this->getScheduler()->scheduleDelayedTask(new ClosureTask(function() : void{
 				$heart = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
+                $dataFolder = $this->getDataFolder();
+                $configFilePath = $dataFolder . 'config.yml'; 
+                $config = yaml_parse_file($configFilePath);
+                $recipe1 = $config['RecipeItem1'];
+                $recipe2 = $config['RecipeItem2'];
+                $recipe3 = $config['RecipeItem3'];
 				$this->getServer()->getCraftingManager()->registerShapedRecipe(new ShapedRecipe(
 					[
 						"CBC",
@@ -61,9 +69,9 @@ private $config;
 						"CBC"
 					],
 					[
-						"A" => new ExactRecipeIngredient(VanillaItems::HEART_OF_THE_SEA()),
-						"B" => new ExactRecipeIngredient(VanillaItems::PRISMARINE_SHARD()),
-						"C" => new ExactRecipeIngredient(VanillaItems::GOLD_INGOT())
+						"A" => new ExactRecipeIngredient(VanillaItems::$recipe1()),
+						"B" => new ExactRecipeIngredient(VanillaItems::$recipe2()),
+						"C" => new ExactRecipeIngredient(VanillaItems::$recipe3())
 					],
 					[$heart]
 				));
@@ -98,7 +106,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
      public function onPlayerJoin(PlayerJoinEvent $event) {
         $player = $event->getPlayer();
         $playerName = $player->getName();
-
+         
         if ($this->playerData->exists($playerName)) {
            $heart = $this->playerData->get($playerName);
            $heart = (int) $heart; // Convert $heart to an integer
@@ -123,7 +131,6 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         $this->playerData->set($playerName, $heart);
         $this->playerData->save();
     }
- 
 
 	/**
 	 * @priority MONITOR
@@ -150,12 +157,18 @@ public function onCommand(CommandSender $sender, Command $command, string $label
 			}
 		}
 	} 
-public function onItemUse(PlayerItemUseEvent $event) {
-        $player = $event->getPlayer();
-        $item = $event->getItem();
-        $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
-        $item->setCount(1);
-        $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
-        $player->getInventory()->removeItem($item);
-	}
+    public function onItemUse(PlayerItemUseEvent $event) {
+       $player = $event->getPlayer();
+       $item = $event->getItem();
+       $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
+       $item->setCount(1);
+    
+    if ($player->getMaxHealth() >=  $this->maxHealth) {
+        $player->sendMessage("You have reached the maximum health limit.");
+        return;
+    }
+    
+    $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
+    $player->getInventory()->removeItem($item);
+    }
 }
