@@ -1,5 +1,5 @@
 # Don't Touch This !
-version: 1.0.0
+version: 1.1.0
 
 # Loss Hearts On Death Don't Change This !
 Loss Heart: 2
@@ -12,3 +12,13 @@ Heart : 2
 
 # Heart Crafting 
 register-recipes: true
+
+# Max Heart Limit
+max_health: 60 
+# 60 Health = 30 Heart
+
+# Recipe
+RecipeItem1: HEART_OF_THE_SEA
+RecipeItem2: PRISMARINE_SHARD
+RecipeItem3: GOLD_INGOT
+# Recipe Items Must Be Registered In Vanillaitems 
