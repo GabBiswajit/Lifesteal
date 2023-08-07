@@ -43,8 +43,6 @@ private $config;
 	    $version = $this->getDescription()->getVersion();
         $configVer = $this->getConfig()->get("version");
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
-        $this->saveDefaultConfig();
-        $this->maxHealth = $this->getConfig()->get("max_health");
         
         $this->saveResource("Lifesteal.mcpack");
 		$rpManager = $this->getServer()->getResourcePackManager();
@@ -163,7 +161,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
        $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
        $item->setCount(1);
     
-    if ($player->getMaxHealth() >=  $this->maxHealth) {
+    if ($player->getMaxHealth() >= $this->getConfig()->get("max_health")); {
         $player->sendMessage("You have reached the maximum health limit.");
         return;
     }
