@@ -138,7 +138,10 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         $entity = $event->getEntity();
         $cause = $entity->getLastDamageCause();
 		$player->setMaxHealth($player->getMaxHealth() - $this->config->get("Loss Heart"));
-        
+                $playerName = $player->getName();
+                $heart = $player->getHealth();
+              $this->playerData->set($playerName, $heart);
+              $this->playerData->save();
 		if ($cause instanceof EntityDamageByEntityEvent) {
             $damager = $cause->getDamager();
 
@@ -166,7 +169,11 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         return;
     }
     
-    $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
+    $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart");
+    $playerName = $player->getName();
+    $heart = $player->getHealth();
+    $this->playerData->set($playerName, $heart);
+    $this->playerData->save();
     $player->getInventory()->removeItem($item);
     }
 }
