@@ -169,7 +169,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         return;
     }
     
-    $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart");
+    $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
     $playerName = $player->getName();
     $heart = $player->getHealth();
     $this->playerData->set($playerName, $heart);
