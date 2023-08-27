@@ -38,10 +38,6 @@ private $playerData;
 private $config;
 private $protectedPlayers = [];
 
-	public function __construct(PluginLoader $loader, Server $server, PluginDescription $description, string $dataFolder, string $file, ResourceProvider $resourceProvider) {
-        parent::__construct($loader, $server, $description, $dataFolder, $file, $resourceProvider);
-	}
-	
 	public function onEnable(): void{
         $this->playerData = new Config($this->getDataFolder() . "playerdata.yml", Config::YAML);
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
