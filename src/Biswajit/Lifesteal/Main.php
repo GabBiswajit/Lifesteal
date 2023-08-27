@@ -140,7 +140,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
             $currentTime = time();
             $protectionEndTime = $this->protectedPlayers[$entity->getName()];
             if ($currentTime < $protectionEndTime) {
-                $event->cancel(true);
+                $event->cancel();
             } else {
                 unset($this->protectedPlayers[$entity->getName()]);
             }
