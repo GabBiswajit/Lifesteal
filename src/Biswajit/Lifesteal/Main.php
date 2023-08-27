@@ -37,6 +37,10 @@ final class Main extends PluginBase implements Listener{
 private $playerData;
 private $config;
 private $protectedPlayers = [];
+
+	public function __construct(PluginLoader $loader, Server $server, PluginDescription $description, string $dataFolder, string $file, ResourceProvider $resourceProvider) {
+        parent::__construct($loader, $server, $description, $dataFolder, $file, $resourceProvider);
+	}
 	
 	public function onEnable(): void{
         $this->playerData = new Config($this->getDataFolder() . "playerdata.yml", Config::YAML);
@@ -140,7 +144,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
             $currentTime = time();
             $protectionEndTime = $this->protectedPlayers[$entity->getName()];
             if ($currentTime < $protectionEndTime) {
-                $event->setCancelled(true);
+                $event->cancel(true);
             } else {
                 unset($this->protectedPlayers[$entity->getName()]);
             }
