@@ -16,6 +16,7 @@ use pocketmine\item\VanillaItems;
 use pocketmine\utils\Config;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\player\Player;
+use pocketmine\event\Cancellable;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\plugin\PluginBase;
@@ -139,7 +140,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
             $currentTime = time();
             $protectionEndTime = $this->protectedPlayers[$entity->getName()];
             if ($currentTime < $protectionEndTime) {
-                $event->cancel(true);
+                $event->setCancelled(true);
             } else {
                 unset($this->protectedPlayers[$entity->getName()]);
             }
