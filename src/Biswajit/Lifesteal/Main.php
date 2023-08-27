@@ -161,9 +161,9 @@ public function onCommand(CommandSender $sender, Command $command, string $label
     public function onItemUse(PlayerItemUseEvent $event) {
        $player = $event->getPlayer();
        $item = $event->getItem();
-       $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
-       $item->setCount(1);
-    
+       $itemHeart = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
+       $itemHeart->setCount(1);
+    if ($item->equals($itemHeart)) {
     if ($player->getMaxHealth() >= $this->getConfig()->get("max_health")) {
         $player->sendMessage("You have reached the maximum health limit.");
         return;
@@ -174,6 +174,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
     $heart = $player->getHealth();
     $this->playerData->set($playerName, $heart);
     $this->playerData->save();
-    $player->getInventory()->removeItem($item);
+    $player->getInventory()->removeItem($itemHeart);
+     } 
     }
-}
+   }
