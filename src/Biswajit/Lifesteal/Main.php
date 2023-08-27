@@ -35,6 +35,7 @@ final class Main extends PluginBase implements Listener{
 /** @var Config */
 private $playerData;
 private $config;
+private $protectedPlayers = [];
 	
 	public function onEnable(): void{
         $this->playerData = new Config($this->getDataFolder() . "playerdata.yml", Config::YAML);
@@ -104,7 +105,9 @@ public function onCommand(CommandSender $sender, Command $command, string $label
      public function onPlayerJoin(PlayerJoinEvent $event) {
         $player = $event->getPlayer();
         $playerName = $player->getName();
-         
+        $this->protectedPlayers[$player->getName()] = time() + $this->config->get("Protected-Time");
+        $player->sendMessage("§l§cYour Are Protected For " . $this->config->get("Protected-Time") . " Seconds");
+	     
         if ($this->playerData->exists($playerName)) {
            $heart = $this->playerData->get($playerName);
            $heart = (int) $heart; // Convert $heart to an integer
@@ -129,7 +132,20 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         $this->playerData->set($playerName, $heart);
         $this->playerData->save();
     }
-
+    public function onDamage(EntityDamageEvent $event) {
+    $entity = $event->getEntity();
+    if ($entity instanceof Player) {
+        if (isset($this->protectedPlayers[$entity->getName()])) {
+            $currentTime = time();
+            $protectionEndTime = $this->protectedPlayers[$entity->getName()];
+            if ($currentTime < $protectionEndTime) {
+                $event->cancel(true);
+            } else {
+                unset($this->protectedPlayers[$entity->getName()]);
+            }
+         }
+      }
+   }
 	/**
 	 * @priority MONITOR
 	 */
