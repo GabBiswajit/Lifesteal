@@ -7,15 +7,17 @@ Loss Heart: 2
 #Ban On Hearts If Its Set On 0 Than Set Loss On Hearts On 1 !
 Ban On Hearts: 1
 
-# Get Heart On Consumed A Heart
+# Get Heart On Consumed A Heart.
 Heart : 2
 
 # Heart Crafting 
 register-recipes: true
 
+# On Join Protected Time
+Protected-Time: "60" # Enter In Second's.
+
 # Max Heart Limit
-max_health: 60 
-# 60 Health = 30 Heart
+max_health: "60" # 60 Health = 30 Heart.
 
 # Recipe
 RecipeItem1: HEART_OF_THE_SEA
