@@ -96,7 +96,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
             $sender->sendMessage("§cYour Inventory is Full. Please Empty it!");
             return false;
         }
-	$health = $entity->getHealth();
+	$health = $sender->getHealth();
         if ($health <= 4) {
         $sender->sendMessage("§7You Can't Withdrawal More §r §cHeart");
 	}else{
