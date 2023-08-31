@@ -96,11 +96,16 @@ public function onCommand(CommandSender $sender, Command $command, string $label
             $sender->sendMessage("§cYour Inventory is Full. Please Empty it!");
             return false;
         }
+	$health = $entity->getHealth();
+        if ($health <= 4) {
+        $sender->sendMessage("§7You Can't Withdrawal More §r §cHeart");
+	}else{
         $sender->setMaxHealth($sender->getMaxHealth() - 2);
         $sender->getInventory()->addItem($heart);
         $sender->sendMessage("§l§aYou have successfully withdrawn a heart.");
+	}
     }
-    return false;
+	return false;
 }
     
      public function onPlayerJoin(PlayerJoinEvent $event) {
