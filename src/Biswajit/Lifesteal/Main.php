@@ -54,8 +54,8 @@ private $protectedPlayers = [];
 		CustomiesItemFactory::getInstance()->registerItem(heart::class, "lifesteal:heart", "heart");
 
 		if($this->getConfig()->get("register-recipes", true)){
-			$this->getScheduler()->scheduleDelayedTask(new ClosureTask(function() : void{
-				$heart = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
+		$this->getScheduler()->scheduleDelayedTask(new ClosureTask(function() : void{
+                $heart = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
                 $dataFolder = $this->getDataFolder();
                 $configFilePath = $dataFolder . 'config.yml'; 
                 $config = yaml_parse_file($configFilePath);
@@ -129,15 +129,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         }
     }
 
-    public function onPlayerQuit(PlayerQuitEvent $event) {
-        $player = $event->getPlayer();
-        $playerName = $player->getName();
-        $heart = $player->getHealth();
-
-        // Save the player's heart value when they leave
-        $this->playerData->set($playerName, $heart);
-        $this->playerData->save();
-    }
+    
     public function onDamage(EntityDamageEvent $event) {
     $entity = $event->getEntity();
     if ($entity instanceof Player) {
@@ -159,13 +151,12 @@ public function onCommand(CommandSender $sender, Command $command, string $label
 		$player = $event->getPlayer();
         $entity = $event->getEntity();
         $cause = $entity->getLastDamageCause();
-		$player->setMaxHealth($player->getMaxHealth() - $this->config->get("Loss Heart"));
-                $playerName = $player->getName();
-                $heart = $player->getHealth();
-              $this->playerData->set($playerName, $heart);
-              $this->playerData->save();
+		$lossheart = $this->config->get("Loss Heart");
+		$heart = (int) ($lossheart + $lossheart);
+		$player->setMaxHealth($player->getMaxHealth() - $heart);
+                $this->SaveHeart($player, $heart);
 		if ($cause instanceof EntityDamageByEntityEvent) {
-            $damager = $cause->getDamager();
+              $damager = $cause->getDamager();
 
             if ($damager instanceof Player) {
                 $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
@@ -175,8 +166,8 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         }
 		
 		if($player->getMaxHealth() === $this->config->get("Ban On Hearts")){
-			if($player->kick('You lost all your healths')){
-				$player->getServer()->getNameBans()->addBan($player->getName(), 'Lost all healths');
+	        if($player->kick('You lost all your healths')){
+	        $player->getServer()->getNameBans()->addBan($player->getName(), 'Lost all healths');
 			}
 		}
 	} 
@@ -186,17 +177,25 @@ public function onCommand(CommandSender $sender, Command $command, string $label
        $itemHeart = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
        $itemHeart->setCount(1);
     if ($item->equals($itemHeart)) {
-    if ($player->getMaxHealth() >= $this->getConfig()->get("max_health")) {
+    $maxHeath = $this->getConfig()->get("max_health");
+    $heath = (int) ($maxHeath + $maxHeath);
+    if ($player->getMaxHealth() >= $heath) {
         $player->sendMessage("You have reached the maximum health limit.");
         return;
     }
-    
-    $player->setMaxHealth($player->getMaxHealth() + $this->config->get("Heart"));
-    $playerName = $player->getName();
-    $heart = $player->getHealth();
-    $this->playerData->set($playerName, $heart);
-    $this->playerData->save();
+    $addheart = $this->config->get("Heart");
+    $heart = (int) ($addheart + $addheart);
+    $player->setMaxHealth($player->getMaxHealth() + $heart);
+    $this->SaveHeart($player, $heart);
     $player->getInventory()->removeItem($itemHeart);
      } 
     }
+	
+   public function SaveHeart($player, $amount) {
+        $playerName = $player->getName();
+        $health = $this->playerData->get($playerName);
+        $heart = ($health + $amount);
+        $this->playerData->set($playerName, $heart);
+        $this->playerData->save();
+     }
    }
