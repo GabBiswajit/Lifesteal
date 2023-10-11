@@ -91,7 +91,18 @@ public function onCommand(CommandSender $sender, Command $command, string $label
             $sender->sendMessage("This command can only be used in-game.");
             return true;
         }
+        if (!isset($args[0])) {
+                $sender->sendMessage("§e/withdrawal <amount>");
+                return false;
+            }
+        $amount = (int) ($args[0] + $args[0]);
+        $health = $sender->getHealth();
+        if($health < $amount) {
+         $sender->sendMessage("§cYou Don't Have $amount Heath Yo Withdrawal !!");
+                return false;
+            }
         $heart = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
+        $heart->setCount($args[0]);
         if (!$sender->getInventory()->canAddItem($heart)) {
             $sender->sendMessage("§cYour Inventory is Full. Please Empty it!");
             return false;
@@ -100,7 +111,11 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         if ($health <= 4) {
         $sender->sendMessage("§7You Can't Withdrawal More §r §cHeart");
 	}else{
-        $sender->setMaxHealth($sender->getMaxHealth() - 2);
+		
+        $addheart = $this->config->get("Heart");
+        $hearts = (int) ($addheart + $addheart);
+        $heart = $hearts * $args[0];
+        $sender->setMaxHealth($sender->getMaxHealth($maxHealth - $heart);
         $sender->getInventory()->addItem($heart);
         $sender->sendMessage("§l§aYou have successfully withdrawn a heart.");
 	}
