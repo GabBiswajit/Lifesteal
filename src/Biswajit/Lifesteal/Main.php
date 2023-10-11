@@ -115,7 +115,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         $addheart = $this->config->get("Heart");
         $hearts = (int) ($addheart + $addheart);
         $heart = $hearts * $args[0];
-        $sender->setMaxHealth($sender->getMaxHealth($maxHealth - $heart);
+        $sender->setMaxHealth($sender->getMaxHealth($maxHealth - $heart));
         $sender->getInventory()->addItem($heart);
         $sender->sendMessage("§l§aYou have successfully withdrawn a heart.");
 	}
