@@ -95,7 +95,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
                 $sender->sendMessage("§e/withdrawal <amount>");
                 return false;
             }
-        $amount = (int) ($args[0] + $args[0]);
+        $amount = (int) $args[0] + (int) $args[0];
         $health = $sender->getHealth();
         if($health < $amount) {
          $sender->sendMessage("§cYou Don't Have $amount Heath Yo Withdrawal !!");
@@ -114,8 +114,8 @@ public function onCommand(CommandSender $sender, Command $command, string $label
 		
         $addheart = $this->config->get("Heart");
         $hearts = (int) ($addheart + $addheart);
-        $heart = $hearts * $args[0];
-        $sender->setMaxHealth($sender->getMaxHealth($maxHealth - $heart));
+        $heart = $hearts * (int) $args[0];
+        $sender->setMaxHealth($sender->getMaxHealth - $heart);
         $sender->getInventory()->addItem($heart);
         $sender->sendMessage("§l§aYou have successfully withdrawn a heart.");
 	}
