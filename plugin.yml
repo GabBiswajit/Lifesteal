@@ -1,7 +1,7 @@
 name: Lifesteal
 main: Biswajit\Lifesteal\Main
 author: Biswajit
-version: 1.2.0
+version: 1.2.1
 api: 5.0.0
 depend:
 - Customies
