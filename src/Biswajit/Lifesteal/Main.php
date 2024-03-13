@@ -39,10 +39,10 @@ private $config;
 private $protectedPlayers = [];
 
 	public function onEnable(): void{
-        $this->playerData = new Config($this->getDataFolder() . "playerdata.yml", Config::YAML);
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-	    $this->saveResource("config.yml");
-	    $version = $this->getDescription()->getVersion();
+        $this->playerData = new Config($this->getDataFolder() . "playerdata.yml", Config::YAML); 
+	$this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->saveResource("config.yml");
+	$version = $this->getDescription()->getVersion();
         $configVer = $this->getConfig()->get("version");
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
         
@@ -111,11 +111,8 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         if ($health <= 4) {
         $sender->sendMessage("§7You Can't Withdrawal More §r §cHeart");
 	}else{
-		
-        $addheart = $this->config->get("Heart");
-        $hearts = (int) ($addheart + $addheart);
-        $heart = $hearts * (int) $args[0];
-        $sender->setMaxHealth($sender->getMaxHealth() - $heart);
+        $amount = (int)$args[0] + $args[0];
+        $sender->setMaxHealth($sender->getMaxHealth() - $amount);
         $sender->getInventory()->addItem($heart);
         $sender->sendMessage("§l§aYou have successfully withdrawn a heart.");
 	}
@@ -130,13 +127,11 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         $player->sendMessage("§l§cYour Are Protected For " . $this->config->get("Protected-Time") . " Seconds");
 	     
         if ($this->playerData->exists($playerName)) {
-           $heart = $this->playerData->get($playerName);
-           $heart = (int) $heart; // Convert $heart to an integer
+           $heart = (int) $this->playerData->get($playerName);
            $player->setMaxHealth($heart);
            $player->setHealth($heart);
         } else {
-            // Set default heart value for new players
-            $defaultHeart = 20; // Change this to your desired default heart value
+            $defaultHeart = 20;
             $this->playerData->set($playerName, $defaultHeart);
             $this->playerData->save();
             $player->setMaxHealth($defaultHeart);
@@ -164,25 +159,27 @@ public function onCommand(CommandSender $sender, Command $command, string $label
 	 */
 	public function onPlayerDeath(PlayerDeathEvent $event): void{
 		$player = $event->getPlayer();
-        $entity = $event->getEntity();
-        $cause = $entity->getLastDamageCause();
+                $entity = $event->getEntity();
+                $cause = $entity->getLastDamageCause();
 		$lossheart = $this->config->get("Loss Heart");
 		$heart = (int) ($lossheart + $lossheart);
 		$player->setMaxHealth($player->getMaxHealth() - $heart);
                 $this->SaveHeart($player, $heart);
 		if ($cause instanceof EntityDamageByEntityEvent) {
-              $damager = $cause->getDamager();
+                $damager = $cause->getDamager();
 
             if ($damager instanceof Player) {
                 $item = CustomiesItemFactory::getInstance()->get("lifesteal:heart");
-                $item->setCount(1); // Set the quantity of the dropped item
+                $item->setCount(1);
                 $entity->getWorld()->dropItem($entity->getPosition(), $item);
             }
         }
 		
-		if($player->getMaxHealth() === $this->config->get("Ban On Hearts")){
-	        if($player->kick('You lost all your healths')){
-	        $player->getServer()->getNameBans()->addBan($player->getName(), 'Lost all healths');
+          if($player->getMaxHealth() === $this->config->get("Ban On Hearts")){
+	        if($player->kick("§cYou lost all your hearts');
+                $this->playerData->set($player->getName(), 20);
+                $this->playerData->save();
+	        $player->getServer()->getNameBans()->addBan($player->getName(), 'Lost all hearts');
 			}
 		}
 	} 
