@@ -176,7 +176,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         }
 		
           if($player->getMaxHealth() === $this->config->get("Ban On Hearts")){
-	        if($player->kick("§cYou lost all your hearts');
+	        if($player->kick("§cYou lost all your hearts");
                 $this->playerData->set($player->getName(), 20);
                 $this->playerData->save();
 	        $player->getServer()->getNameBans()->addBan($player->getName(), 'Lost all hearts');
