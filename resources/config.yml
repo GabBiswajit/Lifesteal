@@ -1,5 +1,5 @@
 # Don't Touch This !
-version: 1.2.0
+version: 1.2.1
 
 # Loss Hearts On Death Don't Change This !
 Loss Heart: 1
@@ -8,7 +8,7 @@ Loss Heart: 1
 Ban On Hearts: 1
 
 # Get Heart On Consumed A Heart.
-Heart : 2
+Heart : 1
 
 # Heart Crafting 
 register-recipes: true
