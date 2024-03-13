@@ -111,9 +111,9 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         if ($health <= 4) {
         $sender->sendMessage("§7You Can't Withdrawal More §r §cHeart");
 	}else{
-        $amount = ($args[0] + $args[0]);
-        $playerhealth = (int) $sender->getMaxHealth() - $amount;
-        $sender->setMaxHealth($playerhealth);
+        $playerhealth = (int) $args[0];
+	$amount = $playerhealth + $playerhealth;
+        $sender->setMaxHealth($sender->getMaxHealth() - $amount);
         $sender->getInventory()->addItem($heart);
         $sender->sendMessage("§l§aYou have successfully withdrawn a heart.");
 	}
