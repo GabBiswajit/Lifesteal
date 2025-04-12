@@ -156,17 +156,16 @@ class HeartRecipe {
             "DIAMOND_BLOCK" => VanillaBlocks::DIAMOND(),
             "NETHERITE_INGOT" => VanillaItems::NETHERITE_INGOT(),
             "TOTEM" => VanillaItems::TOTEM(),
-            "BEACON" => VanillaItems::BEACON(),
+            "BEACON" => VanillaBlocks::BEACON(),
             "IRON_BLOCK" => VanillaBlocks::IRON(),
             "EMERALD_BLOCK" => VanillaBlocks::EMERALD(),
-            "OBSIDIAN" => VanillaItems::OBSIDIAN(),
-            "TNT" => VanillaItems::TNT(),
+            "OBSIDIAN" => VanillaBlocks::OBSIDIAN(),
+            "TNT" => VanillaBlocks::TNT(),
             "DIAMOND" => VanillaItems::DIAMOND(),
             "GOLD_INGOT" => VanillaItems::GOLD_INGOT(),
             "IRON_INGOT" => VanillaItems::IRON_INGOT(),
             "EMERALD" => VanillaItems::EMERALD(),
             "ENDER_PEARL" => VanillaItems::ENDER_PEARL(),
-            "ENDER_EYE" => VanillaItems::ENDER_EYE(),
             "NETHER_STAR" => VanillaItems::NETHER_STAR()
         ];
         
