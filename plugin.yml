@@ -1,6 +1,6 @@
 name: Lifesteal
 main: Biswajit\Lifesteal\Main
-version: 1.0.0
+version: 2.0.0
 api: 5.0.0
 description: A comprehensive Lifesteal plugin with advanced health management and database integration
 author: Biswajit
