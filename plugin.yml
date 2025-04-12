@@ -1,18 +1,43 @@
 name: Lifesteal
 main: Biswajit\Lifesteal\Main
-author: Biswajit
-version: 1.2.1
+version: 1.0.0
 api: 5.0.0
-depend:
-- Customies
-description: You can steal hearts from the players you kill!
-
-commands:
-    withdrawal:
-        description: "To Withdraw Hearts"
-        permission: Lifesteal.cmd.withdrawal
+description: A comprehensive Lifesteal plugin with advanced health management and database integration
+author: Biswajit
 
 permissions:
-    Lifesteal.cmd.withdrawal:
-        description: "Permission To Use/Withdraw Command"
-        default: true
+  lifesteal.command:
+    default: true
+    description: Allows using the main Lifesteal command
+  
+  lifesteal.command.sethearts:
+    default: op
+    description: Allows setting a player's hearts
+  
+  lifesteal.command.gethearts:
+    default: true
+    description: Allows checking a player's hearts
+  
+  lifesteal.command.resethearts:
+    default: op
+    description: Allows resetting a player's hearts
+  
+  lifesteal.command.withdraw:
+    default: true
+    description: Allows withdrawing hearts into items
+  
+  lifesteal.command.leaderboard:
+    default: true
+    description: Allows viewing the leaderboards
+  
+  lifesteal.command.reload:
+    default: op
+    description: Allows reloading the plugin configuration
+  
+  lifesteal.admin:
+    default: op
+    description: Grants access to all admin features
+    children:
+      lifesteal.command.sethearts: true
+      lifesteal.command.resethearts: true
+      lifesteal.command.reload: true
