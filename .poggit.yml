@@ -6,6 +6,6 @@ projects:
   Lifesteal:
     path: ""
     libs:
-      - src: Poggit
-        name: libasynql
+      - src: poggit/libasynql/libasynql
+        version: ^4.2.3
 ...
