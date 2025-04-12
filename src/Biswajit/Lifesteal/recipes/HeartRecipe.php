@@ -10,6 +10,7 @@ use Biswajit\Lifesteal\utils\RevivalItem;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\utils\TextFormat;
 
 class HeartRecipe {
@@ -151,13 +152,13 @@ class HeartRecipe {
     private function getItemFromString(string $itemName): ?Item {
         // Common item names mapping
         $itemMap = [
-            "GOLD_BLOCK" => VanillaItems::GOLD_BLOCK(),
-            "DIAMOND_BLOCK" => VanillaItems::DIAMOND_BLOCK(),
+            "GOLD_BLOCK" => VanillaBlocks::GOLD(),
+            "DIAMOND_BLOCK" => VanillaBlocks::DIAMOND(),
             "NETHERITE_INGOT" => VanillaItems::NETHERITE_INGOT(),
             "TOTEM" => VanillaItems::TOTEM(),
             "BEACON" => VanillaItems::BEACON(),
-            "IRON_BLOCK" => VanillaItems::IRON_BLOCK(),
-            "EMERALD_BLOCK" => VanillaItems::EMERALD_BLOCK(),
+            "IRON_BLOCK" => VanillaBlocks::IRON(),
+            "EMERALD_BLOCK" => VanillaBlocks::EMERALD(),
             "OBSIDIAN" => VanillaItems::OBSIDIAN(),
             "TNT" => VanillaItems::TNT(),
             "DIAMOND" => VanillaItems::DIAMOND(),
