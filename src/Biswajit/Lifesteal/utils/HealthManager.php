@@ -40,7 +40,7 @@ class HealthManager {
      * Load player data from database
      * 
      * @param string $player
-     * @param callable $callback
+     * @param callable|null $callback
      */
     public function loadPlayerData(string $player, ?callable $callback = null): void {
         $player = strtolower($player);
@@ -78,7 +78,7 @@ class HealthManager {
      * Save player data to database
      * 
      * @param string $player
-     * @param callable $callback
+     * @param callable|null $callback
      */
     public function savePlayerData(string $player, ?callable $callback = null): void {
         $player = strtolower($player);
@@ -95,10 +95,11 @@ class HealthManager {
                 "kills" => $data["kills"],
                 "deaths" => $data["deaths"]
             ], $callback);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->plugin->getLogger()->warning("Error saving player data: " . $e->getMessage());
         }
         
+        // Optional: This second call might be redundant; remove if not needed.
         $data = $this->playerHearts[$player];
         $this->database->executeChange("lifesteal.update.player", [
             "player" => $player,
@@ -322,7 +323,7 @@ class HealthManager {
         $name = strtolower($player->getName());
         
         if(!isset($this->playerHearts[$name])) {
-            $this->loadPlayerData($name, function() use ($player, $name) {
+            $this->loadPlayerData($name, function() use ($player) {
                 $this->applyHealthNow($player);
             });
         } else {
