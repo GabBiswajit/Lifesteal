@@ -41,9 +41,6 @@ class Main extends PluginBase {
         // Register event listeners
         $this->getServer()->getPluginManager()->registerEvents(new PlayerListener($this), $this);
 
-        // Log success message
-        $this->getLogger()->info(TextFormat::GREEN . "Lifesteal plugin has been enabled!");
-        $this->getLogger()->info(TextFormat::YELLOW . "Developed by Biswajit");
     }
 
     protected function onDisable(): void {
@@ -52,8 +49,6 @@ class Main extends PluginBase {
             $this->database->close();
         }
 
-        // Log message
-        $this->getLogger()->info(TextFormat::RED . "Lifesteal plugin has been disabled!");
     }
 
     /**
