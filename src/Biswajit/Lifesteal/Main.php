@@ -17,7 +17,6 @@ use pocketmine\crafting\ExactRecipeIngredient;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\resourcepacks\ZippedResourcePack;
 use pocketmine\scheduler\ClosureTask;
-use Biswajit\Lifesteal\EventListener;
 use Symfony\Component\Filesystem\Path;
 use function array_merge;
 
