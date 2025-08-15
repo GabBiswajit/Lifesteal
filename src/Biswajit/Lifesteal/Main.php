@@ -17,6 +17,7 @@ use pocketmine\crafting\ExactRecipeIngredient;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\resourcepacks\ZippedResourcePack;
 use pocketmine\scheduler\ClosureTask;
+use Biswajit\Lifesteal\EventListener;
 use Symfony\Component\Filesystem\Path;
 use function array_merge;
 
@@ -37,7 +38,7 @@ class Main extends PluginBase {
         self::$instance = $this;
         API::getInstance()->init($this);
 
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 
         $this->saveResource("config.yml");
         $this->saveResource("Lifesteal.mcpack");
