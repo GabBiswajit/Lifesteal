@@ -1,94 +1,17 @@
-# Lifesteal Plugin Configuration
+#Ban On Hearts If Its Set On 0 Than Set Loss On Hearts On 1 !
+ban-on-hearts: 1
 
-# Database settings
-database:
-  # Database type (sqlite or mysql)
-  type: sqlite
-  
-  # SQLite settings
-  sqlite:
-    file: "players.sqlite"
-  
-  # MySQL settings
-  mysql:
-    host: "localhost"
-    username: "root"
-    password: ""
-    schema: "lifesteal"
-    port: 3306
-  
-  # Number of worker threads for database operations
-  worker-limit: 1
+# Heart Crafting
+register-recipes: true
 
-# Health settings
-default-hearts: 10
-min-hearts: 1
-max-hearts: 20
-hearts-per-kill: 1
+# On Join Protected Time
+Protected-Time: "60" # Enter In Second's.
 
-# Elimination settings
-elimination-enabled: true
-elimination-hearts: 0
-elimination-type: "ban"  # Options: kick, ban, spectator
-elimination-message: "§cYou have been eliminated from the game! You lost all your hearts!"
-elimination-broadcast: "§c{player} has been eliminated from the game!"
+# Max Heart Limit
+max_health: "30" 
 
-# Ban settings
-ban:
-  enabled: true
-  duration: 7  # Duration in days (0 = permanent)
-  message: "§cYou have been banned due to losing all your hearts! You can rejoin in {time}."
-  time-format: "§e{days} days, {hours} hours, {minutes} minutes, and {seconds} seconds"
-  reset-hearts-on-ban: true  # Whether to reset hearts when a player is banned
-
-# Revival settings
-revival:
-  enabled: true
-  item-name: "§6§lRevival Bacon"
-  item-lore: ["§7Use this item to revive a banned player", "§7Give to an admin to use"]
-  success-message: "§aYou have successfully revived {player}!"
-  recipe:
-    enabled: true
-    shape:
-      - "GTG"
-      - "THT"
-      - "GTG"
-    ingredients:
-      G: "GOLD_BLOCK"
-      T: "TOTEM"
-      H: "BEACON"
-    amount: 1  # Number of revival items crafted per recipe
-
-# Heart Item settings
-heart-item:
-  name: "§c§lHeart"
-  lore: ["§7Right-click to gain 1 heart", "§7Current value: 1 heart"]
-  consume-message: "§aYou gained 1 heart!"
-  withdraw-cost: 1  # Number of hearts required to withdraw 1 heart item
-  withdraw-min-hearts: 2  # Minimum hearts a player must have to withdraw
-
-# Heart Recipe settings
-heart-recipe:
-  enabled: true
-  shape:
-    - "GDG"
-    - "DND"
-    - "GDG"
-  ingredients:
-    G: "GOLD_BLOCK"
-    D: "DIAMOND_BLOCK"
-    N: "NETHERITE_INGOT"
-  amount: 1  # Number of heart items crafted
-
-# Leaderboard settings
-leaderboard:
-  titles:
-    hearts: "§c§lTop Hearts"
-    kills: "§4§lTop Killers"
-    kdr: "§6§lTop K/D Ratio"
-  default-limit: 10  # Default number of entries to show
-  # Time in seconds to cache leaderboard results (300 = 5 minutes)
-  cache-duration: 300
-  
-# General settings
-announce-hearts-on-join: true
+# Recipe
+RecipeItem1: HEART_OF_THE_SEA
+RecipeItem2: PRISMARINE_SHARD
+RecipeItem3: GOLD_INGOT
+# Recipe Items Must Be Registered In Vanillaitems 

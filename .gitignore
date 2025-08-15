@@ -1,0 +1,44 @@
+# PHP Composer dependencies
+/vendor/
+
+# Composer PHAR
+composer.phar
+
+# IDE and editor folders
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+/logs/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# PHPUnit
+.phpunit.result.cache
+/.phpunit.cache/
+
+# Build
+/build/
+/dist/
+
+# Testing
+*.tmp
+*.temp
+
+# PHPStan
+/phpstan.neon
+
+# Runtime
+*.pid
+*.sock
